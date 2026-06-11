@@ -23,7 +23,7 @@
     // Recommended Options
     "strict": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,        // Cambiado a true: Obliga a usar 'import type' y mantiene sintaxis ESM pura
+    "verbatimModuleSyntax": false,        // Cambiado a true: Obliga a usar 'import type' y mantiene sintaxis ESM pura
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
