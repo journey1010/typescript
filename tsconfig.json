@@ -9,7 +9,7 @@
     "module": "esnext",                  // Cambiado de nodenext a esnext para ECMAScript puro
     "moduleResolution": "bundler",       // Ideal para entornos ESM modernos (Vite, Webpack, Rspack, etc.)
     "target": "esnext",
-    "types": [],
+    "types": ["node"],
 
     // Other Outputs
     "sourceMap": true,
