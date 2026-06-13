@@ -1,14 +1,18 @@
 import "reflect-metadata"
-import { DataSource } from "typeorm"
+import { DataSource } from "typeorm";
+import { departments } from './entities/departments';
+import { districts } from "./entities/districts";
+import { provinces } from "./entities/provinces";
 
-const AppDataSource = new DataSource({
+export const AppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
     port: 5432,
     username: "postgres",
     password: "postgres_password",
     database: "postgres",
-    entities: [],
+    entities: [departments,districts,provinces],
     synchronize: true,
     logging: false,
 });
+
