@@ -25,5 +25,6 @@ export class UbigeoProcessor {
             fs.readFile(provincesPath, 'utf-8').then(JSON.parse),
             fs.readFile(districtPath, 'utf-8').then(JSON.parse)
         ]);
+    
     }
 }

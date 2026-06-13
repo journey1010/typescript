@@ -16,6 +16,9 @@
     "declaration": true,
     "declarationMap": true,
 
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
