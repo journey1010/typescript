@@ -7,6 +7,7 @@
     "typescritp": "^1.0.0"
   },
   "dependencies": {
+    "pg": "^8.21.0",
     "typeorm": "^1.0.0"
   }
 }
