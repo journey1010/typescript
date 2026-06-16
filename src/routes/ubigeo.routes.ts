@@ -26,7 +26,7 @@ router.get('/departments', async (_req: Request, res: Response) => {
  */
 router.get('/departments/:departmentId/provinces', async (req: Request, res: Response) => {
     try {
-        const { departmentId } = req.params;
+        const departmentId = String(req.params['departmentId']);
         const repo = AppDataSource.getRepository(Province);
         const provinces = await repo.find({
             where: { department_id: departmentId },
@@ -48,7 +48,7 @@ router.get('/departments/:departmentId/provinces', async (req: Request, res: Res
  */
 router.get('/provinces/:provinceId/districts', async (req: Request, res: Response) => {
     try {
-        const provinceId = Number(req.params['provinceId']);
+        const provinceId = Number(String(req.params['provinceId']));
         const repo = AppDataSource.getRepository(District);
         const districts = await repo.find({
             where: { province_id: provinceId },
