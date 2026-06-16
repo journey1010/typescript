@@ -130,4 +130,49 @@ router.post('/refresh', async (req: Request, res: Response) => {
     }
 });
 
+
+// =============================================================================
+router.post('/login-unsafe', async (req: Request, res: Response) => {
+    try {
+        const { email, password } = req.body as { email?: string; password?: string };
+
+        if (!email || !password) {
+            res.status(400).json({ message: 'Email y contraseña son requeridos' });
+            return;
+        }
+
+        // ❌ VULNERABLE: entrada del usuario interpolada directamente en el SQL
+        const rawSql = `
+            SELECT id, name, email, dni, created_at, updated_at
+            FROM users
+            WHERE email = '${email}'
+              AND password = '${password}'
+            LIMIT 1
+        `;
+
+        // Exponer la query generada para que se vea el ataque
+        console.warn('[SQL-INJECTION-DEMO] Query ejecutada:\n', rawSql);
+
+        const result: unknown[] = await AppDataSource.query(rawSql);
+
+        if (!result || result.length === 0) {
+            res.status(401).json({
+                message: 'Credenciales inválidas',
+                debug_query: rawSql,          // ← en un sistema real NUNCA exponer esto
+            });
+            return;
+        }
+
+        res.json({
+            message: '⚠️ Login exitoso (ruta VULNERABLE)',
+            rows_returned: result.length,
+            data: result,
+            debug_query: rawSql,
+        });
+    } catch (error) {
+        // Exponer el error también — útil para ver errores de sintaxis SQL del atacante
+        res.status(500).json({ message: 'Error SQL', error: String(error) });
+    }
+});
+
 export default router;
