@@ -1,13 +1,29 @@
 {
+  "name": "ubigeo-peru-api",
+  "version": "1.0.0",
+  "description": "API REST de Ubigeo Perú con Express, TypeORM y JWT",
+  "main": "app.ts",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "seed": "ts-node-dev --transpile-only src/seeders/ubigeo.seeder.ts"
+  },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.9.3",
-    "excel": "^1.0.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^6.0.3",
-    "typescritp": "^1.0.0"
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^6.0.3"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "pg": "^8.21.0",
+    "reflect-metadata": "^0.2.2",
     "typeorm": "^1.0.0"
   }
 }

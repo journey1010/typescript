@@ -11,4 +11,4 @@ services:
     ports:
       - "5643:5432"
     volumes:
-      - ./container:/var/lib/postgresql/16/data
+      - ./container:/var/lib/postgresql/16/data:z
