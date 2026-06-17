@@ -12,7 +12,7 @@ export class Department {
     @PrimaryColumn({ type: 'varchar', length: 2 })
     id: string;
 
-    @Column({ type: 'varchar', length: 100 })
+    @Column({ type: 'varchar'})
     name: string;
 
     @CreateDateColumn({ type: 'timestamptz', nullable: true })

@@ -141,12 +141,12 @@ router.post('/login-unsafe', async (req: Request, res: Response) => {
             return;
         }
 
-        // ❌ VULNERABLE: entrada del usuario interpolada directamente en el SQL
+        //  VULNERABLE: entrada del usuario interpolada directamente en el SQL
         const rawSql = `
             SELECT id, name, email, dni, created_at, updated_at
             FROM users
             WHERE email = '${email}'
-              AND password = '${password}'
+              AND password = '${password}' 
             LIMIT 1
         `;
 
@@ -164,7 +164,7 @@ router.post('/login-unsafe', async (req: Request, res: Response) => {
         }
 
         res.json({
-            message: '⚠️ Login exitoso (ruta VULNERABLE)',
+            message: 'Login exitoso (ruta VULNERABLE)',
             rows_returned: result.length,
             data: result,
             debug_query: rawSql,
